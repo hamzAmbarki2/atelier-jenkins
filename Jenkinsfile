@@ -1,10 +1,12 @@
 pipeline {
     agent any
-
+    triggers {
+        pollSCM('H/5 * * * * *') // Toutes les 5 secondes
+    }
     stages {
-        stage('Hello') {
+        stage('Test') {
             steps {
-                echo 'Hello World'
+                echo "Build déclenché à: ${new Date()}"
             }
         }
     }
